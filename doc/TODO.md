@@ -1,0 +1,10 @@
+- [ ] O sistema deve ser responsivo e possuir tratamento do design via CSS e JavaScript.
+- [x] O sistema precisa ter banco de dados.
+- [x] O sistema deve possuir cadastro de usuários e um mecanismo de login e senha.
+- [ ] O sistema precisa fornecer pelo menos 1 CRUD completo de alguma tabela do banco (Inserção, alteração, remoção e seleção), que não seja a dos usuários.
+- [ ] As inserções, alterações e remoções obviamente devem ser seletivas (aplicadas em algum objeto específico), porém o sistema deve ter pelo menos 1 seleção seletiva (mostrar algum dado específico caso o usuário queira), que não seja a dos usuários.
+- [ ] O sistema deve possuir algum tipo de associação muitos para muitos no banco de dados.
+- [ ] O sistema precisa ter algum tipo de manipulação de diretórios e arquivos.
+- [x] O sistema precisa ter tratamento de exceções.
+- [ ] O sistema deve ter um nome e uma logomarca exclusiva.
+- [ ] O sistema deve possuir pelo menos uma galeria de fotos.

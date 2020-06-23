@@ -1,0 +1,29 @@
+Como trabalho final da disciplina, vocês podem se organizar em grupos de 3 ou 4 pessoas.
+
+Cada grupo deve desenvolver um sistema que resolva algum problema real a sua escolha (Não precisa ser inédito, pode ser um problema para o qual já exista alguma solução computacional).
+
+Aconselho fazer algo em alguma área que vocês gostem de trabalhar.
+
+As regras são as seguintes:
+
+1 - O sistema deve ser responsivo e possuir tratamento do design via CSS e JavaScript.
+
+2 - O sistema precisa ter banco de dados.
+
+3 - O sistema deve possuir cadastro de usuários e um mecanismo de login e senha.
+
+4- O sistema precisa fornecer pelo menos 1 CRUD completo de alguma tabela do banco (Inserção, alteração, remoção e seleção), que não seja a dos usuários.
+
+5- As inserções, alterações e remoções obviamente devem ser seletivas (aplicadas em algum objeto específico), porém o sistema deve ter pelo menos 1 seleção seletiva (mostrar algum dado específico caso o usuário queira), que não seja a dos usuários.
+
+6- O sistema deve possuir algum tipo de associação muitos para muitos no banco de dados.
+
+7- O sistema precisa ter algum tipo de manipulação de diretórios e arquivos.
+
+8- O sistema precisa ter tratamento de exceções.
+
+9- O sistema deve ter um nome e uma logomarca exclusiva.
+
+10- O sistema deve possuir pelo menos uma galeria de fotos.
+
+Qualquer dúvida, por favor entre em contato.

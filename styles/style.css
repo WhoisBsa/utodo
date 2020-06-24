@@ -1,0 +1,17 @@
+html, body{
+  height:100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.grandParentContaniner{
+  display:table; height:100%; margin: 0 auto;
+}
+
+.parentContainer{
+  display:table-cell; vertical-align:middle;
+}

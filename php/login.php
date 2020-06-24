@@ -1,12 +1,19 @@
 <?php
 
+include('conf.php');
+
   function trataDados($login, $senha) {
     if (!$login || !$senha) {
       $message = 'Preencha todos os dados!';
       echo "<script>alert('$message')</script>";
       echo "<script>window.location.replace('../');</script>";
     } else {
-       $con = new mysqli('localhost', 'root', '', 'userlogin');
+       $con = new mysqli(
+        get_config_vars()->{'ip'}, 
+        get_config_vars()->{'user'}, 
+        get_config_vars()->{'password'}, 
+        get_config_vars()->{'db'}
+      );
 
        $result = $con->query("SELECT name, pass FROM login WHERE name = '$login' AND pass = '$senha'");
 

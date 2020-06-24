@@ -1,22 +1,67 @@
-CREATE DATABASE userlogin;
+-- ---
+-- Database 'todo'
+-- ---
 
-USE userlogin;
+DROP DATABASE IF EXISTS `todo`;
 
-CREATE TABLE login (
-  id      int auto_increment primary key,
-  name    varchar(50),
-  pass    varchar(50)
+create database todo;
+
+use todo;
+
+-- ---
+-- Table 'usuario'
+-- ---
+
+DROP TABLE IF EXISTS `usuario`;
+		
+CREATE TABLE `usuario` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(100) NULL DEFAULT NULL,
+  `pass` VARCHAR(250) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
 );
 
-SELECT * FROM login WHERE name = 'matheus' AND pass = 'suehtam';
+-- ---
+-- Table 'todo'
+-- ---
 
-SELECT * FROM login;
-SELECT * FROM login WHERE name = 'matheus';
+DROP TABLE IF EXISTS `todo`;
+		
+CREATE TABLE `todo` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `content` VARCHAR(200) NOT NULL,
+  `status` BINARY NOT NULL DEFAULT false,
+  PRIMARY KEY (`id`)
+);
 
-INSERT INTO login(name, pass) VALUES
-	('hemilio', 'hlam'),	
-	('matheus', 'suehtam'),
-    ('rafael', 'rafael123'),
-    ('gustavo', 'gustavao'),
-    ('joao', 'joao123'),
-    ('maria', 'maria123');
+-- ---
+-- Table 'participam'
+-- ---
+
+DROP TABLE IF EXISTS `participam`;
+		
+CREATE TABLE `participam` (
+  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `id_login` INTEGER NOT NULL,
+  `id_todo` INTEGER NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
+-- ---
+-- Foreign Keys 
+-- ---
+
+ALTER TABLE `participam` ADD FOREIGN KEY (id_login) REFERENCES `usuario` (`id`);
+ALTER TABLE `participam` ADD FOREIGN KEY (id_todo) REFERENCES `todo` (`id`);
+
+
+-- ---
+-- Test Data
+-- ---
+
+INSERT INTO `usuario` (`id`,`name`,`pass`) VALUES
+ (1,'matheus','matheus'), (2,'hemilio','hemilio');
+INSERT INTO `todo` (`id`,`content`,`status`) VALUES
+(1,'capar o bode!',false), (2,'catar coquinho!', true), (3,'jogar jokenpô', false);
+INSERT INTO `participam` (`id`,`id_login`,`id_todo`) VALUES
+(1,1,1),(2,2,2), (3,1,3), (4,2,3);

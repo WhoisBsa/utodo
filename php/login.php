@@ -15,7 +15,7 @@ include('conf.php');
         get_config_vars()->{'db'}
       );
 
-       $result = $con->query("SELECT name, pass FROM login WHERE name = '$login' AND pass = '$senha'");
+       $result = $con->query("SELECT name, pass FROM usuario WHERE name = '$login' AND pass = '$senha'");
 
        if (mysqli_num_rows($result)) {  // Verifica se o usuário existe
         header('location: main.php');

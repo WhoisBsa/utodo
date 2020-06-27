@@ -12,14 +12,15 @@
 			);
 		}
 
+		public function buscarToDos($idUsuario) {
+			$stmt = $this->conn->prepare(
+				"select u.name, p.id, t.content from usuario as u
+					join participam as p 
+						on u.id = p.id_login and u.id = ". $idUsuario ."
+					join todo as t
+						on t.id = p.id_todo;"
+			);
 
-		public function buscarToDos($id) {
-			$stmt = $this->conn->prepare("select u.name, p.id, t.content from usuario as u
-											join participam as p 
-												on u.id = p.id_login and u.id = ". $id ."
-											join todo as t
-												on t.id = p.id_todo;"
-										);
 			$stmt->execute();
 			return $stmt->fetchALL(PDO::FETCH_ASSOC);
 		}
@@ -47,17 +48,15 @@
 
 		public function inserirToDo($idUsuario, $content) {
 			$status = 0;
-			// INSERINDO DADOS NA TABELA TODO
 			$stmt = $this->conn->prepare("INSERT INTO todo(content, status) VALUES (:CONTENT, :STATUS)");
 			$stmt->bindParam(":CONTENT", $content);	
 			$stmt->bindParam(":STATUS", $status);
+
 			if ($stmt->execute()){
 				$ultimoToDoInserido = $this->conn->lastInsertId();
-				echo $ultimoToDoInserido;
+				// AQUI TERÁ UM FOREACH QUE RECEBERÁ O ARRAY COM TODOS OS PARTICIPANTES				
 				$this->inserirParticipam($idUsuario, $ultimoToDoInserido);
 			}
-
-			echo "funcionou!";
 		}
 
 		public function inserirParticipam($idUsuario,$idToDo){
@@ -69,8 +68,6 @@
 
 		
 	}
-
-
  ?>
 
 

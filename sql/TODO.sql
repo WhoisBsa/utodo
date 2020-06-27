@@ -3,10 +3,8 @@
 -- ---
 
 DROP DATABASE IF EXISTS `todo`;
-
-create database todo;
-
-use todo;
+CREATE DATABASE todo;
+USE todo;
 
 -- ---
 -- Table 'usuario'
@@ -15,7 +13,7 @@ use todo;
 DROP TABLE IF EXISTS `usuario`;
 		
 CREATE TABLE `usuario` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `id` INTEGER AUTO_INCREMENT,
   `name` VARCHAR(100) NULL DEFAULT NULL,
   `pass` VARCHAR(250) NULL DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -28,7 +26,7 @@ CREATE TABLE `usuario` (
 DROP TABLE IF EXISTS `todo`;
 		
 CREATE TABLE `todo` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `id` INTEGER AUTO_INCREMENT,
   `content` VARCHAR(200) NOT NULL,
   `status` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
@@ -41,7 +39,7 @@ CREATE TABLE `todo` (
 DROP TABLE IF EXISTS `participam`;
 		
 CREATE TABLE `participam` (
-  `id` INTEGER NOT NULL AUTO_INCREMENT,
+  `id` INTEGER AUTO_INCREMENT,
   `id_login` INTEGER NOT NULL,
   `id_todo` INTEGER NOT NULL,
   PRIMARY KEY (`id`)

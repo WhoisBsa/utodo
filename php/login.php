@@ -1,12 +1,10 @@
 <?php
 
-include('conf.php');
+  include('conf.php');
 
   function trataDados($login, $senha) {
     if (!$login || !$senha) {
-      $message = 'Preencha todos os dados!';
-      echo "<script>alert('$message')</script>";
-      echo "<script>window.location.replace('../');</script>";
+      throw new Exception("Preencha todos os dados!", 1);
     } else {
        $con = new mysqli(
         get_config_vars()->{'ip'}, 
@@ -35,10 +33,7 @@ include('conf.php');
 
     trataDados($_SESSION['login'], $_SESSION['senha']);
   } catch (Exception $e) {
-      $message = 'Houve algum erro inesperado, tente novamente!';
-      echo "<script>alert('$message')</script>";
+      echo "<script>alert('". $e->getMessage() . "')</script>";
       echo "<script>window.location.replace('../');</script>";
   }
-  
-
 ?>

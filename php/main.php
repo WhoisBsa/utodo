@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -24,7 +25,9 @@
             
             <div id="accordion">
               <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                <div class="card-header bg-dark text-white" id="headingOne" 
+                     data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
+                     aria-controls="collapseOne" style="cursor:pointer;">
                   <h5 class="mb-0">
                     ToDo 1
                   </h5>
@@ -35,9 +38,9 @@
                     <div>
                       Exemplo de texto 1
                       <div class="mt-3 float-right">
-                        <button class="btn btn-outline-success" name="feito">Feito</button>
-                        <button class="btn btn-outline-primary" name="editar">Editar</button>
-                        <button class="btn btn-outline-danger"  name="excluir">Excluir</button>
+                        <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
+                        <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
                       </div>
                     </div>
                     <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">matheus</div>
@@ -45,7 +48,9 @@
                 </div>
               </div>
               <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                <div class="card-header bg-dark text-white" id="headingTwo" 
+                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" 
+                     aria-controls="collapseTwo" style="cursor:pointer;">
                   <h5 class="mb-0">
                     ToDo 2
                   </h5>
@@ -55,9 +60,9 @@
                     <div>
                       Exemplo de texto 2
                       <div class="mt-3 float-right">
-                        <button class="btn btn-outline-success" name="feito">Feito</button>
-                        <button class="btn btn-outline-primary" name="editar">Editar</button>
-                        <button class="btn btn-outline-danger"  name="excluir">Excluir</button>
+                        <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
+                        <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
                       </div>
                     </div> 
                     <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">hemilio</div>
@@ -65,7 +70,9 @@
                 </div>
               </div>
               <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                <div class="card-header bg-dark text-white" id="headingThree" 
+                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" 
+                     aria-controls="collapseThree" style="cursor:pointer;">
                   <h5 class="mb-0">
                     ToDo 3
                   </h5>
@@ -73,11 +80,11 @@
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                   <div class="card-body">
                       <div>
-                        Exemplo de texto 1
+                        Exemplo de texto 3
                         <div class="mt-3 float-right">
-                          <button class="btn btn-outline-success" name="feito">Feito</button>
-                          <button class="btn btn-outline-primary" name="editar">Editar</button>
-                          <button class="btn btn-outline-danger"  name="excluir">Excluir</button>
+                          <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
+                          <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
+                          <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
                         </div>
                       </div> 
                     <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">matheus</div>

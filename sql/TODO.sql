@@ -49,8 +49,12 @@ CREATE TABLE `participam` (
 -- Foreign Keys 
 -- ---
 
-ALTER TABLE `participam` ADD FOREIGN KEY (id_login) REFERENCES `usuario` (`id`);
-ALTER TABLE `participam` ADD FOREIGN KEY (id_todo) REFERENCES `todo` (`id`);
+ALTER TABLE `participam` ADD FOREIGN KEY (id_login) REFERENCES `usuario` (`id`)
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE;
+ALTER TABLE `participam` ADD FOREIGN KEY (id_todo) REFERENCES `todo` (`id`) 
+  ON DELETE CASCADE 
+  ON UPDATE CASCADE;
 
 
 -- ---

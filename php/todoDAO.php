@@ -18,10 +18,12 @@
 			$stmt = $this->conn->prepare(
 				"select u.name, p.id, t.content from usuario as u
 					join participam as p 
-						on u.id = p.id_login and u.id = ". $idUsuario ."
+						on u.id = p.id_login and u.id = :IDUSUARIO
 					join todo as t
 						on t.id = p.id_todo;"
 			);
+
+			$stmt->bindParam(":IDUSUARIO", $idUsuario);
 
 			$stmt->execute();
 			return $stmt->fetchALL(PDO::FETCH_ASSOC);
@@ -31,9 +33,10 @@
 			$stmt = $this->conn->prepare(
 				"select u.name from usuario as u
 					join participam as p
-						on u.id = p.id_login and p.id_todo = " . $idToDo . ";"
+						on u.id = p.id_login and p.id_todo = :IDTODO ;"
 			);
 			
+			$stmt->bindParam(":IDTODO", $idToDo);	
 			$stmt->execute();
 			return $stmt->fetchALL(PDO::FETCH_ASSOC);
 		}
@@ -66,7 +69,7 @@
 			$stmt->bindParam(":IDTODO", $idToDo);
 			$stmt->execute();
 		}
-
+		// FUNÇÂO PARA LOGIN DE USUÁRIO
 		public function login($name, $pass){
 			$stmt = $this->conn->prepare("select id, name, pass from usuario where name = :NAME and pass = :PASS;");
 			$stmt->bindParam(":NAME", $name);	

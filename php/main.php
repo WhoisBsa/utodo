@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
@@ -16,6 +17,10 @@
     <!-- <?php session_start() ?> Pega os dados do usuário -->
     <!-- <?php require_once("todoDAO.php"); ?> Classe para uso das querys -->
 
+    <figure class="figure position-absolute text-center mt-3">
+      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO- Faça você mesmo!" width="100" height="100">
+      <figcaption class="figure-caption text-xs-right">UTODO - Faça você mesmo!</figcaption>
+    </figure>
     <div class="grandParentContaniner">
       <div class="parentContainer">
         <div class="card p-2" style="width: 90vw">
@@ -36,7 +41,9 @@
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                   <div class="card-body">
                     <div>
-                      Exemplo de texto 1
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum consequuntur voluptates 
+                      laudantium eos eum saepe? Reiciendis quod eligendi maxime dicta, mollitia id maiores debitis 
+                      tempora, reprehenderit dolorem labore! Doloremque, nihil.
                       <div class="mt-3 float-right">
                         <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
                         <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
@@ -93,9 +100,6 @@
                 </div>
               </div>
             </div>
-          </div>
-          <div class="card-footer text-muted text-center">
-            UToDo - Faça Você Mesmo!
           </div>
         </div>
       </div>

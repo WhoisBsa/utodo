@@ -67,6 +67,15 @@
 			$stmt->execute();
 		}
 
+		public function login($name, $pass){
+			$stmt = $this->conn->prepare("select id, name, pass from usuario where name = :NAME and pass = :PASS;");
+			$stmt->bindParam(":NAME", $name);	
+			$stmt->bindParam(":PASS", $pass);	
+
+			$stmt->execute();
+			return $stmt->fetchALL(PDO::FETCH_ASSOC);
+		}
+
 		
 	}
  ?>

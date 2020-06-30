@@ -102,9 +102,24 @@
 		public function excluirToDo($idToDo){
 			$stmt = $this->conn->prepare("DELETE FROM todo WHERE id = :IDTODO");
 			$stmt->bindParam(":IDTODO", $idToDo);	
-			$stmt->execute();
+			if ($stmt->execute()){
+				return true;
+			} else {
+				return false;
+			}
 		}
-		
+		// FUNÇÃO PARA EDITAR ToDo
+		public function editarProduto($id, $content, $status) {
+			$stmt = $this->conn->prepare("UPDATE todo SET content=:CONTENT, status=:STATUS WHERE id=:IDTODO");
+			$stmt->bindParam(":IDTODO", $id);
+			$stmt->bindParam(":CONTENT", $content);
+			$stmt->bindParam(":STATUS", $status);
+			if ($stmt->execute()){
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
  ?>
 

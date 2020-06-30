@@ -78,7 +78,26 @@
 			$stmt->execute();
 			return $stmt->fetchALL(PDO::FETCH_ASSOC);
 		}
+		// FUNÇÂO PARA CADASTRO DE USUÁRIO
+		public function cadastroUsuario($name, $pass){
+			$stmt = $this->conn->prepare("select name from usuario where name = :NAME;");
+			$stmt->bindParam(":NAME", $name);	
+			$stmt->execute();
 
+			// var_dump(count($stmt->fetchALL(PDO::FETCH_ASSOC)));
+			
+			if(count($stmt->fetchALL(PDO::FETCH_ASSOC)) > 0){
+				return false;
+			} else {
+				$stmt = $this->conn->prepare("insert into usuario (name, pass) values (:NAME, :PASS);");
+				$stmt->bindParam(":NAME", $name);
+				$stmt->bindParam(":PASS", $pass);
+				if ($stmt->execute()){
+					return true;
+				}
+			}			
+			return false;
+		}
 		
 	}
  ?>

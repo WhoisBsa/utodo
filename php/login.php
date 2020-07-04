@@ -1,21 +1,23 @@
 <?php
 
   include('conf.php');
+  require_once("todoDAO.php");
 
   function trataDados($login, $senha) {
     if (!$login || !$senha) {
       throw new Exception("Preencha todos os dados!", 1);
     } else {
-       $con = new mysqli(
-        get_config_vars()->{'ip'}, 
-        get_config_vars()->{'user'}, 
-        get_config_vars()->{'password'}, 
-        get_config_vars()->{'db'}
-      );
+      $bd = new BD();    
+      $result = $bd->login($login, $senha);
 
-       $result = $con->query("SELECT name, pass FROM usuario WHERE name = '$login' AND pass = '$senha'");
-
-       if (mysqli_num_rows($result)) {  // Verifica se o usuário existe
+       if ($result) {  // Verifica se o usuário existe
+        var_dump($result);
+        
+        echo 'testestestestestestes';
+        session_start();
+        $_SESSION['id'] = $result[0]['id'];
+        $_SESSION['login'] = $result[0]['name'];
+        $_SESSION['senha'] = $result[0]['pass'];
         header('location: main.php');
        } else {
         $message = 'Login ou senha incorretos!';
@@ -26,12 +28,7 @@
   }
 
   try {
-    session_start();
-
-    $_SESSION['login'] = $_POST['login'];
-    $_SESSION['senha'] = $_POST['senha'];
-
-    trataDados($_SESSION['login'], $_SESSION['senha']);
+    trataDados($_POST['login'], $_POST['senha']);
   } catch (Exception $e) {
       echo "<script>alert('". $e->getMessage() . "')</script>";
       echo "<script>window.location.replace('../');</script>";

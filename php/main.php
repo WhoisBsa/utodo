@@ -24,8 +24,10 @@
     <div class="grandParentContaniner">
       <div class="parentContainer">
         <div class="card p-2" style="width: 90vw">
-        <button class="btn btn-outline-dark floa-right"><i class="fas fa-sign-out-alt"></i> Sair</button>
-          <div class="card-body">
+        <form action="logout.php" method="POST">
+          <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        </form>
+        <div class="card-body">
 
           <h4 class="card-title text-center float-center" id="title-login">
             <strong class="">Seus ToDos</strong>

@@ -24,81 +24,68 @@
     <div class="grandParentContaniner">
       <div class="parentContainer">
         <div class="card p-2" style="width: 90vw">
+        <button class="btn btn-outline-dark floa-right"><i class="fas fa-sign-out-alt"></i> Sair</button>
           <div class="card-body">
-            <h4 class="card-title text-center" id="title-login"><strong>Seus ToDos</strong></h4>
-            <hr />
-            
-            <div id="accordion">
-              <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingOne" 
-                     data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" 
-                     aria-controls="collapseOne" style="cursor:pointer;">
-                  <h5 class="mb-0">
-                    ToDo 1
-                  </h5>
-                </div>
 
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                  <div class="card-body">
-                    <div>
-                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum consequuntur voluptates 
-                      laudantium eos eum saepe? Reiciendis quod eligendi maxime dicta, mollitia id maiores debitis 
-                      tempora, reprehenderit dolorem labore! Doloremque, nihil.
-                      <div class="mt-3 float-right">
-                        <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
-                        <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
-                        <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
+          <h4 class="card-title text-center float-center" id="title-login">
+            <strong class="">Seus ToDos</strong>
+          </h4>
+          <hr />
+         
+            <div id="accordion">
+
+              <?php
+
+                $bd = new BD();
+
+                $result = $bd->buscarToDos($_SESSION['id']);
+                $i = 1;
+
+                foreach ($result as $res) {
+
+                  $participam = $bd->buscarTodosUsuariosDoToDo($res['id']);
+                  $nomes = "";
+
+                  echo '
+                  <div class="card mt-2">
+                    <div class="card-header bg-dark text-white" id="heading' . $i . '" 
+                        data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
+                        aria-controls="collapse' . $i . '" style="cursor:pointer;">
+                      <h5 class="mb-0">
+                        ToDo '. $i . '
+                      </h5>
+                    </div>
+
+                    <div id="collapse' . $i . '" class="collapse" aria-labelledby="heading' . $i . '" data-parent="#accordion">
+                      <div class="card-body">
+                        <div>
+                        ' . $res['content'] . '
+                          <div class="mt-3 float-right">
+                            <button class="btn btn-outline-dark" name="feito"><i class="fa fa-check"></i> Feito</button>
+                            <button class="btn btn-outline-secondary" name="editar"><i class="fas fa-edit"></i> Editar</button>
+                            <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
+                          </div>
+                        </div>
+                        ';
+
+                  foreach ($participam as $p) {
+                    echo '
+                    <div class="mt-4 badge badge-pill badge-dark" data-toggle="tooltip" title="Participantes">
+                    ' . $p['name'] . '
+                    </div>
+                    ';
+                  }
+                  
+                  echo '
                       </div>
                     </div>
-                    <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">matheus</div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingTwo" 
-                     data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" 
-                     aria-controls="collapseTwo" style="cursor:pointer;">
-                  <h5 class="mb-0">
-                    ToDo 2
-                  </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                  <div class="card-body">
-                    <div>
-                      Exemplo de texto 2
-                      <div class="mt-3 float-right">
-                        <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
-                        <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
-                        <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
-                      </div>
-                    </div> 
-                    <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">hemilio</div>
-                  </div>
-                </div>
-              </div>
-              <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="headingThree" 
-                     data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" 
-                     aria-controls="collapseThree" style="cursor:pointer;">
-                  <h5 class="mb-0">
-                    ToDo 3
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
-                  <div class="card-body">
-                      <div>
-                        Exemplo de texto 3
-                        <div class="mt-3 float-right">
-                          <button class="btn btn-outline-success" name="feito"><i class="fa fa-check"></i> Feito</button>
-                          <button class="btn btn-outline-primary" name="editar"><i class="fas fa-edit"></i> Editar</button>
-                          <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
-                        </div>
-                      </div> 
-                    <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">matheus</div>
-                    <div class="mt-4 badge badge-pill badge-primary" data-toggle="tooltip" title="Participantes">hemilio</div>
-                  </div>
-                </div>
-              </div>
+                  </div>';
+
+                  $i++;
+                }
+
+              ?>
+
             </div>
           </div>
         </div>

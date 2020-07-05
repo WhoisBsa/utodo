@@ -50,7 +50,7 @@
 			return $stmt->fetchALL(PDO::FETCH_ASSOC);
 		}
 		// INSERE UM ToDo
-		public function inserirToDo($idUsuario, $content) {
+		public function inserirToDo($participantes, $content) {
 			$status = 0;
 			$stmt = $this->conn->prepare("INSERT INTO todo(content, status) VALUES (:CONTENT, :STATUS)");
 			$stmt->bindParam(":CONTENT", $content);	
@@ -58,8 +58,10 @@
 
 			if ($stmt->execute()){
 				$ultimoToDoInserido = $this->conn->lastInsertId();
-				// AQUI TERÁ UM FOREACH QUE RECEBERÁ O ARRAY COM TODOS OS PARTICIPANTES				
-				$this->inserirParticipam($idUsuario, $ultimoToDoInserido);
+				// AQUI TERÁ UM FOREACH QUE RECEBERÁ O ARRAY COM TODOS OS PARTICIPANTES
+				foreach($participantes as $key => $value){
+					$this->inserirParticipam($value, $ultimoToDoInserido);
+				}				
 			}
 		}
 		// INSERE O RELACIONAMENTO USUÁRIO/ToDo

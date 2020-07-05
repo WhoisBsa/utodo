@@ -1,47 +1,50 @@
 <!doctype html>
 <html lang="pt">
-  <head>
-    <title>UTODO - Faça você mesmo</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>UTODO - Faça você mesmo</title>
 
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-  <body>
-    
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="../styles/style.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
   <body class="container-fluid">
     <!-- <?php session_start() ?> Pega os dados do usuário -->
     <!-- <?php require_once("todoDAO.php"); ?> Classe para uso das querys -->
 
     <figure class="figure position-absolute text-center mt-3">
-      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100" height="100">
+      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100"
+        height="100">
       <figcaption class="figure-caption text-xs-center">UTODO - Faça você mesmo!</figcaption>
     </figure>
     <div class="grandParentContaniner">
       <div class="parentContainer">
         <div class="card p-2 mt-3" style="width: 90vw">
-        <form action="logout.php" method="POST">
-          <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
-        </form>
-        <div class="card-body">
+          <form action="logout.php" method="POST">
+            <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
+          </form>
+          <div class="card-body">
 
-          <h4 class="card-title text-center float-center" id="title-login">
-            <strong class=""><i class="fas fa-th-list"></i> Seus ToDos</strong>
-          </h4>
-          <hr />
-         
+            <h4 class="card-title text-center float-center" id="title-login">
+              <strong class=""><i class="fas fa-th-list"></i> Seus ToDos</strong>
+            </h4>
+            <hr />
+
             <div id="accordion">
 
               <div class="card mt-2">
-                <div class="card-header bg-dark text-white" id="add" 
-                    data-toggle="collapse" data-target="#collapseadd" aria-expanded="false" 
-                    aria-controls="collapseadd" style="cursor:pointer;">
+                <div class="card-header bg-dark text-white" id="add" data-toggle="collapse" data-target="#collapseadd"
+                  aria-expanded="false" aria-controls="collapseadd" style="cursor:pointer;">
                   <h5 class="mb-0">
-                  <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
+                    <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
                   </h5>
                 </div>
 
@@ -50,6 +53,16 @@
                     <div>
                       <form method="POST">
                         <div class="form-group">
+                          <label for="">Participantes <i class="fas fa-pencil-alt"></i></label><br>
+                          <?php
+                              $bd = new BD();
+                              $usuarios = $bd->buscarTodosUsuarios();
+
+                              foreach($usuarios as $row) {
+                                echo '<input type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .'">';
+                                echo '<label for="'. $row["name"] .'">'. $row["name"] .'</label><br>';
+                              }
+                            ?>
                           <label for="">Conteúdo <i class="fas fa-pencil-alt"></i></label>
                           <input type="text" name="content" id="login" class="form-control">
                         </div>
@@ -65,9 +78,15 @@
               <?php
 
                 $bd = new BD();
+                $participantes = [];
 
                 if (isset($_POST["btnadd"])){
-                  $bd->inserirToDo($_SESSION['id'], $_POST['content']);
+                  foreach($_POST as $key => $value){
+                    if ($key != "content"){
+                      array_push($participantes, $value);
+                    }
+                  }
+                  $bd->inserirToDo($participantes, $_POST['content']);
                 }
 
                 $result = $bd->buscarToDos($_SESSION['id']);
@@ -134,8 +153,15 @@
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
   </body>
+
 </html>

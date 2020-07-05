@@ -18,27 +18,57 @@
     <!-- <?php require_once("todoDAO.php"); ?> Classe para uso das querys -->
 
     <figure class="figure position-absolute text-center mt-3">
-      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO- Faça você mesmo!" width="100" height="100">
-      <figcaption class="figure-caption text-xs-right">UTODO - Faça você mesmo!</figcaption>
+      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100" height="100">
+      <figcaption class="figure-caption text-xs-center">UTODO - Faça você mesmo!</figcaption>
     </figure>
     <div class="grandParentContaniner">
       <div class="parentContainer">
-        <div class="card p-2" style="width: 90vw">
+        <div class="card p-2 mt-3" style="width: 90vw">
         <form action="logout.php" method="POST">
           <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
         </form>
         <div class="card-body">
 
           <h4 class="card-title text-center float-center" id="title-login">
-            <strong class="">Seus ToDos</strong>
+            <strong class=""><i class="fas fa-th-list"></i> Seus ToDos</strong>
           </h4>
           <hr />
          
             <div id="accordion">
 
+              <div class="card mt-2">
+                <div class="card-header bg-dark text-white" id="add" 
+                    data-toggle="collapse" data-target="#collapseadd" aria-expanded="false" 
+                    aria-controls="collapseadd" style="cursor:pointer;">
+                  <h5 class="mb-0">
+                  <i class="fa fa-plus" aria-hidden="true"></i> Adicionar
+                  </h5>
+                </div>
+
+                <div id="collapseadd" class="collapse" aria-labelledby="headingadd" data-parent="#accordion">
+                  <div class="card-body">
+                    <div>
+                      <form method="POST">
+                        <div class="form-group">
+                          <label for="">Conteúdo <i class="fas fa-pencil-alt"></i></label>
+                          <input type="text" name="content" id="login" class="form-control">
+                        </div>
+                        <button type="submit" name='btnadd' class="btn btn-primary">ADD</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <hr />
+
               <?php
 
                 $bd = new BD();
+
+                if (isset($_POST["btnadd"])){
+                  $bd->inserirToDo($_SESSION['id'], $_POST['content']);
+                }
 
                 $result = $bd->buscarToDos($_SESSION['id']);
                 $i = 1;
@@ -46,7 +76,6 @@
                 foreach ($result as $res) {
 
                   $participam = $bd->buscarTodosUsuariosDoToDo($res['id_todo']);
-                  var_dump($res);
 
                   echo '
                   <div class="card mt-2">

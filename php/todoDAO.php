@@ -99,14 +99,11 @@
 			return false;
 		}
 		// FUNÇÃO PARA EXCLUIR ToDo
-		public function excluirToDo($idToDo){
-			$stmt = $this->conn->prepare("DELETE FROM todo WHERE id = :IDTODO");
-			$stmt->bindParam(":IDTODO", $idToDo);	
-			if ($stmt->execute()){
-				return true;
-			} else {
-				return false;
-			}
+		public function excluirToDo($idToDo, $idLogin){
+			$stmt = $this->conn->prepare("DELETE FROM participam WHERE id_todo = :IDTODO and id_login = :IDLOGIN");
+			$stmt->bindParam(":IDTODO", $idToDo);
+			$stmt->bindParam(":IDLOGIN", $idLogin);
+			return $stmt->execute();
 		}
 		// FUNÇÃO PARA EDITAR ToDo
 		public function editarProduto($id, $content, $status) {

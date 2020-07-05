@@ -16,7 +16,7 @@
 		// RETORNA TODOS OS ToDo DO USUÁRIO
 		public function buscarToDos($idUsuario) {
 			$stmt = $this->conn->prepare(
-				"select u.name, p.id, t.content from usuario as u
+				"select u.name, p.id, p.id_todo, t.content from usuario as u
 					join participam as p 
 						on u.id = p.id_login and u.id = :IDUSUARIO
 					join todo as t

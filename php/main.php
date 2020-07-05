@@ -45,8 +45,8 @@
 
                 foreach ($result as $res) {
 
-                  $participam = $bd->buscarTodosUsuariosDoToDo($res['id']);
-                  $nomes = "";
+                  $participam = $bd->buscarTodosUsuariosDoToDo($res['id_todo']);
+                  var_dump($res);
 
                   echo '
                   <div class="card mt-2">
@@ -63,12 +63,24 @@
                         <div>
                         ' . $res['content'] . '
                           <div class="mt-3 float-right">
-                            <button class="btn btn-outline-dark" name="feito"><i class="fa fa-check"></i> Feito</button>
-                            <button class="btn btn-outline-secondary" name="editar"><i class="fas fa-edit"></i> Editar</button>
-                            <button class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
+                          <form method="POST">
+                              <button type="submit" class="btn btn-outline-dark" name="feito"><i class="fa fa-check"></i> Feito</button>
+                              <button type="submit" class="btn btn-outline-secondary" name="editar"><i class="fas fa-edit"></i> Editar</button>
+                              <button type="submit" class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
+                          </form>
                           </div>
                         </div>
                         ';
+                    if (isset($_POST["feito"])){
+
+                    } else if (isset($_POST["editar"])){
+                      echo 'editado';
+                    } else if (isset($_POST["excluir"])) {
+                      if ($bd->excluirToDo($res['id']))
+                        echo "<script>alert('ToDo excluído!')</script>";
+                      else
+                        echo "faio";
+                    }
 
                   foreach ($participam as $p) {
                     echo '

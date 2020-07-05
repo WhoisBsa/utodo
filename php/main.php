@@ -71,16 +71,6 @@
                           </div>
                         </div>
                         ';
-                    if (isset($_POST["feito"])){
-
-                    } else if (isset($_POST["editar"])){
-                      echo 'editado';
-                    } else if (isset($_POST["excluir"])) {
-                      if ($bd->excluirToDo($res['id']))
-                        echo "<script>alert('ToDo excluído!')</script>";
-                      else
-                        echo "faio";
-                    }
 
                   foreach ($participam as $p) {
                     echo '
@@ -95,7 +85,16 @@
                     </div>
                   </div>';
 
+                  if (isset($_POST["feito"])){
+                    echo 'feito';
+                  } else if (isset($_POST["editar"])){
+                    echo 'editado';
+                  } else if (isset($_POST["excluir"])) {
+                    echo 'excluido';
+                  }
+
                   $i++;
+                  
                 }
 
               ?>

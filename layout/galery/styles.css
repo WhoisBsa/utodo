@@ -1,0 +1,113 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #000;
+}
+
+.show-image {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	background-color: #000;
+	z-index: 2;
+	opacity: .8;
+}
+
+#image-controls {
+	width: 90%;
+	height: 100%;
+	position: absolute;
+	float: left;
+	margin-top: 50px;
+	margin-left: 5%;
+	background-color: #000;
+	z-index: 3;
+}
+
+#imagem1 {
+	width: 40%;
+	height: 600px;
+	position: relative;
+	float: left;
+	margin-left: 30%;
+}
+#imagem2, #imagem3, #imagem4, #imagem5, 
+#imagem6, #imagem7, #imagem8, #imagem9{
+	width: 60%;
+	height: 600px;
+	position: relative;
+	float: left;
+	margin-left: 20%;
+	margin-bottom: 20%;
+}
+
+.arrow {
+	width: 75px;
+	height: 75px;
+	position: absolute;
+	margin-top: 250px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	color: #fff;
+	transition: .5s;
+	z-index: 5;
+}
+
+.arrow h1 {
+	font-size: 42px;
+	margin-top: 10px;
+}
+
+.arrow:hover {
+	cursor: pointer;
+	background-color: #fff;
+	color: #000;
+}
+
+#left-arrow {
+	left: 40px;
+}
+
+#left-arrow h1 {
+	margin-left: -5px;
+}
+
+#right-arrow {
+	float: right;
+	right: 40px;
+}
+
+#right-arrow h1 {
+	margin-left: 5px;
+}
+
+h1 {
+	text-align: center;
+}
+
+#gallery {
+	width: 80%;
+	height: 350px;
+	position: relative;
+	float: left;
+	margin-left: 10%;
+	margin-top: 75px;
+}
+
+#gallery img {
+	width: 30%;
+	height: 350px;
+	position: relative;
+	float: left;
+	margin-left: 2.5%;
+	margin-bottom: 2.5%;
+	transition: .5s;
+}
+
+#gallery img:hover {
+	opacity: .5;
+	cursor: pointer;
+}

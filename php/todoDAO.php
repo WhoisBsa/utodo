@@ -122,7 +122,14 @@
 		// FUNÇÃO PARA CONFIRMAR ToDo
 		public function marcarToDoFeito($id) {
 			$stmt = $this->conn->prepare("UPDATE todo SET status=:STATUS WHERE id=:IDTODO");
-			$status = 1;
+			$status_atual = $this->statusToDo($id);
+
+			if($status_atual[0]['status']){
+				$status = 0;
+			} else {
+				$status = 1;
+			}
+			
 			$stmt->bindParam(":IDTODO", $id);
 			$stmt->bindParam(":STATUS", $status);
 			if ($stmt->execute()){
@@ -130,6 +137,13 @@
 			} else {
 				return false;
 			}
+		}
+
+		public function statusToDo($id){
+			$stmt = $this->conn->prepare("select status from todo where id=:IDTODO;");
+			$stmt->bindParam(":IDTODO", $id);
+			$stmt->execute();
+			return $stmt->fetchALL(PDO::FETCH_ASSOC);
 		}
 	}
  ?>

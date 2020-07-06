@@ -34,5 +34,5 @@ Este projeto é um simples ToDo list compartilhado, em que ao criar uma tarefa o
     ```
     **Obs.**: Alguns usuários e ToDo's são inseridos para teste.
 2. Configure o arquivo conf.json com o ip, usuário, senha e nome do banco.
-
 3. Copie todo projeto para o diretório htdocs do XAMPP e reinicie o servidor.
+4. Alguns sistemas operacionais, solicitam permissão para ler e escrever arquivos. Pode ser necessário para o diretório **relatórios** que é gerada para os relatórios do usuário.

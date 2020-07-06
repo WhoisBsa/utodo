@@ -143,14 +143,6 @@
                     </div>
                   </div>';
 
-                  if (isset($_POST["feito"])){
-                    echo 'feito';
-                  } else if (isset($_POST["editar"])){
-                    echo 'editado';
-                  } else if (isset($_POST["excluir"])) {
-                    $bd->excluirToDo($_POST['excluir']);
-                  }
-
                   $i++;
                   
                 }

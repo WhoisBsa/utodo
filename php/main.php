@@ -60,7 +60,7 @@
 
                               foreach($usuarios as $row) {
                                 if ($_SESSION['login'] === $row['name'])
-                                  echo '<input class="mr-1" type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .' " checked disabled>';
+                                  echo '<input class="mr-1" type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .' " checked>';
                                 else
                                   echo '<input class="mr-1" type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .'">';
                                 echo '<label class="mr-3 border-right border-dark" for="'. $row["name"] .'">'.  ucfirst($row["name"]) .'&nbsp;&nbsp;&nbsp;</label>';
@@ -121,10 +121,10 @@
                         <div>
                         ' . $res['content'] . '
                           <div class="mt-3 float-right">
-                          <form method="POST">
-                              <button type="submit" class="btn btn-outline-dark" name="feito"><i class="fa fa-check"></i> Feito</button>
-                              <button type="submit" class="btn btn-outline-secondary" name="editar"><i class="fas fa-edit"></i> Editar</button>
-                              <button type="submit" class="btn btn-outline-danger"  name="excluir"><i class="fas fa-trash"></i> Excluir</button>
+                          <form action="excluir.php" method="POST">
+                            <button type="submit" class="btn btn-outline-dark" name="feito" value="'. $res["id_todo"] .'"><i class="fa fa-check"></i> Feito</button>
+                            <button type="submit" class="btn btn-outline-secondary" name="editar" value="'. $res["id_todo"] .'"><i class="fas fa-edit"></i> Editar</button>
+                            <button type="submit" class="btn btn-outline-danger"  name="excluir" value="'. $res["id_todo"] .'"><i class="fas fa-trash"></i> Excluir</button>
                           </form>
                           </div>
                         </div>
@@ -148,7 +148,7 @@
                   } else if (isset($_POST["editar"])){
                     echo 'editado';
                   } else if (isset($_POST["excluir"])) {
-                    echo 'excluido';
+                    $bd->excluirToDo($_POST['excluir']);
                   }
 
                   $i++;

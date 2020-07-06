@@ -31,9 +31,9 @@
           <form action="logout.php" method="POST">
             <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
           </form>
-          <div class="card-body">
+          <div class="card-body p-1">
 
-            <h4 class="card-title text-center float-center" id="title-login">
+            <h4 class="card-title text-center float-center mt-2" id="title-login">
               <strong class=""><i class="fas fa-th-list"></i> Seus ToDos</strong>
             </h4>
             <hr />
@@ -162,7 +162,7 @@
 
                 echo '
                   <hr />
-                  <div class="row">
+                  <div class="row ml-1">
                     <div class="col-xs-1-6">
                       <div class="form-group mr-2">
                         <form method="POST">

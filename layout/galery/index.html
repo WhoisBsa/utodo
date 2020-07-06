@@ -4,8 +4,46 @@
 		<title>Aula jQuery</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="styles.css">
+		<link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
 	</head>
+
+	<style>
+		button {
+			display: inline-block;
+			font-weight: 400;
+			color: #000;
+			margin: 20px;
+			text-align: center;
+			vertical-align: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			background-color: #f7f7f7;
+			border: 1px solid #f7f7f7;
+			padding: 0.375rem 0.75rem;
+			font-size: 1rem;
+			line-height: 1.5;
+			border-radius: 0.25rem;
+			transition: color 0.15s ease-in-out, 
+									background-color 0.15s ease-in-out, 
+									border-color 0.15s ease-in-out, 
+									box-shadow 0.15s ease-in-out;
+		}
+
+		button:hover {
+			color: #f7f7f7;
+			background-color: #d9534f;
+			border-color: #d9534f;
+		}
+	</style>
 	<body>
+
+		<form action="../../php/main.php" method="post">
+			<button class="btn-outline-light">
+				<i class="fa fa-times" aria-hidden="true"></i> Sair
+			</button>
+		</form>
 
 		<div class="show-image"></div>
 
@@ -20,6 +58,7 @@
 		<script src="main.js" defer></script>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript" src="effects.js"></script>
+		<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 	</body>
 </html>

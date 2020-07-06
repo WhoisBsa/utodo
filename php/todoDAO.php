@@ -118,6 +118,19 @@
 				return false;
 			}
 		}
+
+		// FUNÇÃO PARA CONFIRMAR ToDo
+		public function marcarToDoFeito($id) {
+			$stmt = $this->conn->prepare("UPDATE todo SET status=:STATUS WHERE id=:IDTODO");
+			$status = 1;
+			$stmt->bindParam(":IDTODO", $id);
+			$stmt->bindParam(":STATUS", $status);
+			if ($stmt->execute()){
+				return true;
+			} else {
+				return false;
+			}
+		}
 	}
  ?>
 

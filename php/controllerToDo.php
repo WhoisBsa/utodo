@@ -6,8 +6,6 @@
     if (isset($_POST["feito"])){
         $bd->marcarToDoFeito($_POST["feito"]);
         header('location: main.php');
-    } else if (isset($_POST["editar"])){
-        echo 'editado';
     } else if (isset($_POST["excluir"])) {
         $bd->excluirToDo($_POST["excluir"]);
         header('location: main.php');

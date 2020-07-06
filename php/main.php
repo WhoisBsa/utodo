@@ -136,7 +136,6 @@
                           <div class="mt-3 float-right">
                           <form action="controllerToDo.php" method="POST">
                             <button type="submit" class="btn btn-outline-dark" name="feito" value="'. $res["id_todo"] .'"><i class="fa fa-check"></i> Feito</button>
-                            <button type="submit" class="btn btn-outline-secondary" name="editar" value="'. $res["id_todo"] .'"><i class="fas fa-edit"></i> Editar</button>
                             <button type="submit" class="btn btn-outline-danger"  name="excluir" value="'. $res["id_todo"] .'"><i class="fas fa-trash"></i> Excluir</button>
                           </form>
                           </div>

@@ -53,17 +53,22 @@
                     <div>
                       <form method="POST">
                         <div class="form-group">
-                          <label for="">Participantes <i class="fas fa-pencil-alt"></i></label><br>
+                          <label for=""><i class="fa fa-users" aria-hidden="true"></i> Participantes</label><br>
                           <?php
                               $bd = new BD();
                               $usuarios = $bd->buscarTodosUsuarios();
 
                               foreach($usuarios as $row) {
-                                echo '<input type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .'">';
-                                echo '<label for="'. $row["name"] .'">'. $row["name"] .'</label><br>';
+                                if ($_SESSION['login'] === $row['name'])
+                                  echo '<input class="mr-1" type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .' " checked disabled>';
+                                else
+                                  echo '<input class="mr-1" type="checkbox" id="'. $row["id"] .'" name="'. $row["name"] .'" value="'. $row["id"] .'">';
+                                echo '<label class="mr-3 border-right border-dark" for="'. $row["name"] .'">'.  ucfirst($row["name"]) .'&nbsp;&nbsp;&nbsp;</label>';
                               }
                             ?>
-                          <label for="">Conteúdo <i class="fas fa-pencil-alt"></i></label>
+                        </div>
+                        <div class="form-group">
+                          <label for="" ><i class="fas fa-pencil-alt"></i> Conteúdo</label>
                           <input type="text" name="content" id="login" class="form-control">
                         </div>
                         <button type="submit" name='btnadd' class="btn btn-primary">ADD</button>
@@ -81,12 +86,17 @@
                 $participantes = [];
 
                 if (isset($_POST["btnadd"])){
-                  foreach($_POST as $key => $value){
-                    if ($key != "content"){
-                      array_push($participantes, $value);
+                  if (!$_POST['content']){
+                    $message = "Preencha todos os campos!";
+                    echo "<script>alert('$message')</script>";
+                  } else {
+                    foreach($_POST as $key => $value){
+                      if ($key != "content"){
+                        array_push($participantes, $value);
+                      }
                     }
+                    $bd->inserirToDo($participantes, $_POST['content']);
                   }
-                  $bd->inserirToDo($participantes, $_POST['content']);
                 }
 
                 $result = $bd->buscarToDos($_SESSION['id']);

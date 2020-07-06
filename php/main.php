@@ -106,17 +106,30 @@
 
                   $participam = $bd->buscarTodosUsuariosDoToDo($res['id_todo']);
 
-                  echo '
+                  if($res['status']==0){
+                    echo '
+                    <div class="card mt-2">
+                      <div class="card-header bg-dark text-white" id="heading' . $i . '" 
+                          data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
+                          aria-controls="collapse' . $i . '" style="cursor:pointer;">
+                        <h5 class="mb-0">
+                          ToDo '. $i . '
+                        </h5>
+                      </div>';
+                  } else {
+                    echo '
                   <div class="card mt-2">
-                    <div class="card-header bg-dark text-white" id="heading' . $i . '" 
+                    <div class="card-header bg-success text-white" id="heading' . $i . '" 
                         data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
                         aria-controls="collapse' . $i . '" style="cursor:pointer;">
                       <h5 class="mb-0">
                         ToDo '. $i . '
                       </h5>
-                    </div>
+                    </div>';
+                  }
+                  
 
-                    <div id="collapse' . $i . '" class="collapse" aria-labelledby="heading' . $i . '" data-parent="#accordion">
+                   echo '<div id="collapse' . $i . '" class="collapse" aria-labelledby="heading' . $i . '" data-parent="#accordion">
                       <div class="card-body">
                         <div>
                         ' . $res['content'] . '

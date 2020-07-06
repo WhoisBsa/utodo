@@ -177,7 +177,7 @@
                     <div class="col-xs-1-6">
                       <div class="form-group">
                         <form action="controllerToDo.php" method="POST">
-                          <button type="submit" class="btn btn-outline-dark" name="download">
+                          <button type="submit" class="btn btn-outline-dark" name="download" value="'. $_SESSION['id'] .'">
                             <i class="fa fa-download" aria-hidden="true"></i>
                             Download ToDo
                           </button>

@@ -20,16 +20,18 @@
     <!-- <?php session_start() ?> Pega os dados do usuário -->
     <!-- <?php require_once("todoDAO.php"); ?> Classe para uso das querys -->
 
-    <figure class="figure position-absolute text-center mt-2">
-      <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100"
-        height="100">
-      <figcaption class="figure-caption text-xs-center">UTODO - Faça você mesmo!</figcaption>
-    </figure>
     <div class="grandParentContaniner">
       <div class="parentContainer">
-        <div class="card p-2 mt-3 mb-3" style="width: 90vw">
-          <form action="logout.php" method="POST">
-            <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
+        <div class="text-center">
+        <figure class="figure text-center">
+          <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100"
+            height="100">
+          <figcaption class="figure-caption text-xs-center">UTODO - Faça você mesmo!</figcaption>
+        </figure>
+        </div>
+        <div class="card p-2 mb-3" style="width: 90vw">
+          <form action="logout.php" method="POST" class="text-right">
+            <button class="btn btn-outline-dark"><i class="fas fa-sign-out-alt"></i> Sair</button>
           </form>
           <div class="card-body p-1">
 
@@ -113,7 +115,7 @@
                           data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
                           aria-controls="collapse' . $i . '" style="cursor:pointer;">
                         <h5 class="mb-0">
-                          '. $res['content'] . '
+                          '. ucfirst($res['content']) . '
                         </h5>
                       </div>';
                   } else {
@@ -123,7 +125,7 @@
                         data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
                         aria-controls="collapse' . $i . '" style="cursor:pointer;">
                       <h5 class="mb-0">
-                        '. $res['content'] . '
+                        '. ucfirst($res['content']) . '
                       </h5>
                     </div>';
                   }
@@ -132,7 +134,7 @@
                    echo '<div id="collapse' . $i . '" class="collapse" aria-labelledby="heading' . $i . '" data-parent="#accordion">
                       <div class="card-body">
                         <div>
-                        ' . $res['content'] . '
+                        ' . ucfirst($res['content']) . '
                           <div class="mt-3 float-right">
                           <form action="controllerToDo.php" method="POST">
                             <button type="submit" class="btn btn-outline-dark" name="feito" value="'. $res["id_todo"] .'"><i class="fa fa-check"></i> Feito</button>

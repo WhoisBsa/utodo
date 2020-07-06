@@ -20,14 +20,14 @@
     <!-- <?php session_start() ?> Pega os dados do usuário -->
     <!-- <?php require_once("todoDAO.php"); ?> Classe para uso das querys -->
 
-    <figure class="figure position-absolute text-center mt-3">
+    <figure class="figure position-absolute text-center mt-2">
       <img src="../layout/logo.png" class="figure-img img-fluid rounded" alt="UTODO - Faça você mesmo!" width="100"
         height="100">
       <figcaption class="figure-caption text-xs-center">UTODO - Faça você mesmo!</figcaption>
     </figure>
     <div class="grandParentContaniner">
       <div class="parentContainer">
-        <div class="card p-2 mt-3" style="width: 90vw">
+        <div class="card p-2 mt-3 mb-3" style="width: 90vw">
           <form action="logout.php" method="POST">
             <button class="btn btn-outline-dark btn-block"><i class="fas fa-sign-out-alt"></i> Sair</button>
           </form>
@@ -153,6 +153,21 @@
 
                   $i++;
                   
+                }
+
+                echo '
+                  <hr /><div class="form-group m-0">
+                    <form method="POST">
+                      <button type="submit" class="btn btn-outline-dark" name="galeria">
+                      <i class="fa fa-camera" aria-hidden="true"></i>
+                      Visualizar Galeria
+                      </button>
+                    </form>
+                    </div>
+                  ';
+
+                if (isset($_POST["galeria"])){
+                  echo "<script>window.location.replace('../layout/galery/index.html');</script>";
                 }
 
               ?>

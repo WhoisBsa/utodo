@@ -161,14 +161,30 @@
                 }
 
                 echo '
-                  <hr /><div class="form-group m-0">
-                    <form method="POST">
-                      <button type="submit" class="btn btn-outline-dark" name="galeria">
-                      <i class="fa fa-camera" aria-hidden="true"></i>
-                      Visualizar Galeria
-                      </button>
-                    </form>
+                  <hr />
+                  <div class="row">
+                    <div class="col-xs-1-6">
+                      <div class="form-group mr-2">
+                        <form method="POST">
+                          <button type="submit" class="btn btn-outline-dark" name="galeria">
+                            <i class="fa fa-camera" aria-hidden="true"></i>
+                            Visualizar Galeria
+                          </button>
+                        </form>
+                      </div>
                     </div>
+
+                    <div class="col-xs-1-6">
+                      <div class="form-group">
+                        <form action="controllerToDo.php" method="POST">
+                          <button type="submit" class="btn btn-outline-dark" name="download">
+                            <i class="fa fa-download" aria-hidden="true"></i>
+                            Download ToDo
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                   ';
 
                 if (isset($_POST["galeria"])){

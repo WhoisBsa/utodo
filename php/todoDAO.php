@@ -104,7 +104,6 @@
 		public function excluirToDo($idToDo){
 			$stmt = $this->conn->prepare("DELETE FROM todo WHERE id = :IDTODO");
 			$stmt->bindParam(":IDTODO", $idToDo);
-			$stmt->bindParam(":IDLOGIN", $idLogin);
 			return $stmt->execute();
 		}
 		// FUNÇÃO PARA EDITAR ToDo

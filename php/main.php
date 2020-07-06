@@ -113,7 +113,7 @@
                           data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
                           aria-controls="collapse' . $i . '" style="cursor:pointer;">
                         <h5 class="mb-0">
-                          ToDo '. $i . '
+                          '. $res['content'] . '
                         </h5>
                       </div>';
                   } else {
@@ -123,7 +123,7 @@
                         data-toggle="collapse" data-target="#collapse' . $i . '" aria-expanded="false" 
                         aria-controls="collapse' . $i . '" style="cursor:pointer;">
                       <h5 class="mb-0">
-                        ToDo '. $i . '
+                        '. $res['content'] . '
                       </h5>
                     </div>';
                   }

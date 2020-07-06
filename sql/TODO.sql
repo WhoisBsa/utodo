@@ -66,4 +66,4 @@ INSERT INTO `usuario` (`id`,`name`,`pass`) VALUES
 INSERT INTO `todo` (`id`,`content`,`status`) VALUES
 (1,'capar o bode!',false), (2,'catar coquinho!', true), (3,'jogar jokenpô', false);
 INSERT INTO `participam` (`id`,`id_login`,`id_todo`) VALUES
-(1,1,1),(2,2,2), (3,1,3), (4,2,3), (5,3,3), (6,3,1);
+(1,1,1),(2,2,2), (3,1,3), (4,2,3);
